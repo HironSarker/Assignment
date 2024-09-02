@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Responsive UI',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: ResponsiveHomePage(),
+    );
+  }
+}
+
+class ResponsiveHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Responsive UI'),
+        actions: [
+          IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+        ],
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 1200) {
+            // Desktop layout
+            return DesktopLayout();
+          } else if (constraints.maxWidth > 800) {
+            // Tablet layout
+            return TabletLayout();
+          } else {
+            // Mobile layout
+            return MobileLayout();
+          }
+        },
+      ),
+    );
+  }
+}
+
+class DesktopLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        width: 600,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'FLUTTER WEB.\nTHE BASICS',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'A simple responsive design example with Flutter for web, tablet, and mobile views.',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Get Started'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TabletLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        width: 500,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'FLUTTER WEB.\nTHE BASICS',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'A simple responsive design example with Flutter for web, tablet, and mobile views.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Get Started'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MobileLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        width: 300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'FLUTTER WEB.\nTHE BASICS',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'A simple responsive design example with Flutter for web, tablet, and mobile views.',
+              style: TextStyle(fontSize: 14),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Get Started'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
